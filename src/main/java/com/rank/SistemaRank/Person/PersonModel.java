@@ -1,9 +1,12 @@
-package com.rank.SistemaRank;
+package com.rank.SistemaRank.Person;
 
+import com.rank.SistemaRank.Missions.MissionsModel;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "tb_cadastro")
+@Table(name = "tb_person")
 public class PersonModel {
 
     @Id
@@ -13,6 +16,9 @@ public class PersonModel {
     private String cpf;
     private String email;
     private int idade;
+    @ManyToOne
+    @JoinColumn(name = "missoes_id")
+    private MissionsModel missions;
 
     public PersonModel() {
     }
