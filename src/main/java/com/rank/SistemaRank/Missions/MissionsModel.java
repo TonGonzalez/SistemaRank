@@ -11,9 +11,9 @@ import java.util.List;
 @Entity
 @Table (name = "tb_missions")
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 public class MissionsModel {
 
     @Id

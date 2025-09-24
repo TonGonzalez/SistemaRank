@@ -8,11 +8,13 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
+
 @Entity
 @Table(name = "tb_person")
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PersonModel {
 
     @Id
