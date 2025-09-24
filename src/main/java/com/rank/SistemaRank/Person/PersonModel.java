@@ -18,9 +18,15 @@ public class PersonModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
+
+    @Column(unique = true)
     private String cpf;
+
+    @Column(unique = true)
     private String email;
+
     private int idade;
     @ManyToOne
     @JoinColumn(name = "missoes_id")
