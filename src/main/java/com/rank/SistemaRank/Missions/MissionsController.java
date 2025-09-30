@@ -3,40 +3,35 @@ package com.rank.SistemaRank.Missions;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("missions")
 public class MissionsController {
 
-    @GetMapping("/boasVindas")
-    public String boasVindas(){
-        return "Primeira mensagem na rota";
-    }
-
     //Add mission(CREATE)
-    @PostMapping("/createMission")
+    @PostMapping("/create")
     public String createMission(){
         return "Missão criada";
     }
 
     //show all missions(READ)
-    @GetMapping("/allMissions")
+    @GetMapping("/list")
     public String showMissions(){
-        return "Mostrar todas missões";
+        return "Listar todas missões";
     }
 
     //show mission for ID(READ)
-    @GetMapping("/all")
+    @GetMapping("/listID")
     public String showIDmissions(){
-        return "Mostrar missão por ID";
+        return "Lista a missão por ID";
     }
 
     //change data from Missions(UPDATE)
-    @PutMapping("/changeDataMission")
+    @PutMapping("/alter")
     public String changeDataMission(){
         return "Alterar informações da missão por ID";
     }
 
     //delete mission(DELETE)
-    @DeleteMapping("/deleteMission")
+    @DeleteMapping("/delete")
     public String deleteIDmission(){
         return "Missão deletada pela ID";
     }
