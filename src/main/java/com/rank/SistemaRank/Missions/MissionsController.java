@@ -27,7 +27,7 @@ public class MissionsController {
     //change data from Missions(UPDATE)
     @PutMapping("/alter")
     public String changeDataMission(){
-        return "Alterar informações da missão por ID";
+        return "Alterar informações da missão";
     }
 
     //delete mission(DELETE)
