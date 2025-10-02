@@ -1,5 +1,6 @@
 package com.rank.SistemaRank.Missions;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rank.SistemaRank.Person.PersonModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,7 @@ public class MissionsModel {
     private String difficulty;
 
     @OneToMany(mappedBy = "missions")
+    @JsonIgnore
     private List<PersonModel> person;
 
 }
