@@ -2,9 +2,17 @@ package com.rank.SistemaRank.Missions;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("missions")
+@RequestMapping("/missions")
 public class MissionsController {
+
+    private MissionsService missionsService;
+
+    public MissionsController(MissionsService missionsService) {
+        this.missionsService = missionsService;
+    }
 
     //Add mission(CREATE)
     @PostMapping("/create")
@@ -14,8 +22,8 @@ public class MissionsController {
 
     //show all missions(READ)
     @GetMapping("/list")
-    public String showMissions(){
-        return "Listar todas missões";
+    public List<MissionsModel> listMissions(){
+        return missionsService.listMissions();
     }
 
     //show mission for ID(READ)

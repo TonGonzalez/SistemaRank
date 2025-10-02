@@ -34,6 +34,9 @@ public class PersonModel {
     @Column(name = "age")
     private int age;
 
+    @Column(name = "rank")
+    private String rank;
+
     @ManyToOne
     @JoinColumn(name = "missoes_id")
     private MissionsModel missions;
