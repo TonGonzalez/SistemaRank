@@ -27,9 +27,9 @@ public class PersonController {
     }
 
     //show person for ID(READ)
-    @GetMapping("/listID")
-    public String showIDPersons(){
-        return "Mostrar usuário por ID";
+    @GetMapping("/list/{id}")
+    public PersonModel listIDperson(@PathVariable Long id){
+        return personService.listID(id);
     }
 
     //change data from Person(UPDATE)

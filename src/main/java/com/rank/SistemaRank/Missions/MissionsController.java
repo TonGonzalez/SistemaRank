@@ -1,5 +1,6 @@
 package com.rank.SistemaRank.Missions;
 
+import com.rank.SistemaRank.Person.PersonModel;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,9 +28,9 @@ public class MissionsController {
     }
 
     //show mission for ID(READ)
-    @GetMapping("/listID")
-    public String showIDmissions(){
-        return "Lista a missão por ID";
+    @GetMapping("/list/{id}")
+    public MissionsModel listIDmission(@PathVariable Long id){
+        return missionsService.missionID(id);
     }
 
     //change data from Missions(UPDATE)
