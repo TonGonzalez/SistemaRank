@@ -25,5 +25,9 @@ public class PersonService {
         return personForId.orElse(null);
     }
 
+    public PersonModel createPerson(PersonModel newPerson){
+        return personRepository.save(newPerson);
+    }
+
 
 }

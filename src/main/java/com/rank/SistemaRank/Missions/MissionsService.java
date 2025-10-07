@@ -27,5 +27,9 @@ public class MissionsService {
         return missionForId.orElse(null);
     }
 
+    public MissionsModel createMission(MissionsModel newMission){
+        return missionsRepository.save(newMission);
+    }
+
 
 }

@@ -17,8 +17,8 @@ public class MissionsController {
 
     //Add mission(CREATE)
     @PostMapping("/create")
-    public String createMission(){
-        return "Missão criada";
+    public MissionsModel createMission(MissionsModel newMission){
+        return missionsService.createMission(newMission);
     }
 
     //show all missions(READ)
