@@ -39,9 +39,9 @@ public class PersonController {
     }
 
     //delete person(DELETE)
-    @DeleteMapping("/delete")
-    public String deleteIDperson(){
-        return "Usuário deletado pelo ID";
+    @DeleteMapping("/delete/{id}")
+    public void deleteIDperson(@PathVariable Long id){
+        personService.deleteIDperson(id);
     }
 
 

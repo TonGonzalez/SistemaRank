@@ -40,9 +40,9 @@ public class MissionsController {
     }
 
     //delete mission(DELETE)
-    @DeleteMapping("/delete")
-    public String deleteIDmission(){
-        return "Missão deletada pela ID";
+    @DeleteMapping("/delete/{id}")
+    public void deleteIDmission(@PathVariable Long id){
+        missionsService.deleteIDmission(id);
     }
 
 
