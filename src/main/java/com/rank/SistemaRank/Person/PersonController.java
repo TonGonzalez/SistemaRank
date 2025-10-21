@@ -44,5 +44,11 @@ public class PersonController {
         personService.deleteIDperson(id);
     }
 
+    //update person
+    @PutMapping("/update/{id}")
+    public PersonModel updatePersonID(@PathVariable Long id, @RequestBody PersonModel updatePerson){
+        return personService.updatePerson(id, updatePerson);
+    }
+
 
 }

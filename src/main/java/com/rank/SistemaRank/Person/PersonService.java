@@ -20,17 +20,29 @@ public class PersonService {
         return personRepository.findAll();
     }
 
+    //List person for id
     public PersonModel listID(Long id){
         Optional<PersonModel> personForId = personRepository.findById(id);
         return personForId.orElse(null);
     }
 
+    //Create new person
     public PersonModel createPerson(PersonModel newPerson){
         return personRepository.save(newPerson);
     }
 
+    //Delete person
     public void  deleteIDperson(Long id){
         personRepository.deleteById(id);
+    }
+
+    //Update person
+    public PersonModel updatePerson(Long id, PersonModel upPerson){
+        if (personRepository.existsById(id)){
+            upPerson.setId(id);
+            return personRepository.save(upPerson);
+        }
+        return null;
     }
 
 
