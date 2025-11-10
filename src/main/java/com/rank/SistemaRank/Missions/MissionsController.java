@@ -1,6 +1,5 @@
 package com.rank.SistemaRank.Missions;
 
-import com.rank.SistemaRank.Person.PersonModel;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,26 +16,26 @@ public class MissionsController {
 
     //Add mission(CREATE)
     @PostMapping("/create")
-    public MissionsModel createMission(MissionsModel newMission){
+    public MissionsDTO createMission(@RequestBody MissionsDTO newMission){
         return missionsService.createMission(newMission);
     }
 
     //show all missions(READ)
     @GetMapping("/list")
-    public List<MissionsModel> listMissions(){
+    public List<MissionsDTO> listMissions(){
         return missionsService.listMissions();
     }
 
     //show mission for ID(READ)
     @GetMapping("/list/{id}")
-    public MissionsModel listIDmission(@PathVariable Long id){
-        return missionsService.missionID(id);
+    public MissionsDTO listIDmission(@PathVariable Long id){
+        return missionsService.listID(id);
     }
 
     //change data from Missions(UPDATE)
-    @PutMapping("/alter")
-    public String changeDataMission(){
-        return "Alterar informações da missão";
+    @PutMapping("/update/{id}")
+    public MissionsDTO updateMissionID(@PathVariable Long id, @RequestBody MissionsDTO updateMission){
+        return missionsService.updateMission(id,updateMission);
     }
 
     //delete mission(DELETE)

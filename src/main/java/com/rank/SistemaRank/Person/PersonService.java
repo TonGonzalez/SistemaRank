@@ -4,31 +4,38 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PersonService {
 
-
     private PersonRepository personRepository;
+    private PersonMapper personMapper;
 
-    public PersonService(PersonRepository personRepository) {
+    public PersonService(PersonRepository personRepository, PersonMapper personMapper) {
         this.personRepository = personRepository;
+        this.personMapper = personMapper;
     }
 
     //List all persons
-    public List<PersonModel> listPersons(){
-        return personRepository.findAll();
+    public List<PersonDTO> listPersons(){
+        List<PersonModel> persons = personRepository.findAll();
+        return persons.stream()
+                .map(personMapper::map)
+                .collect(Collectors.toList());
     }
 
     //List person for id
-    public PersonModel listID(Long id){
+    public PersonDTO listID(Long id){
         Optional<PersonModel> personForId = personRepository.findById(id);
-        return personForId.orElse(null);
+        return personForId.map(personMapper::map).orElse(null);
     }
 
     //Create new person
-    public PersonModel createPerson(PersonModel newPerson){
-        return personRepository.save(newPerson);
+    public PersonDTO createPerson(PersonDTO personDTO){
+        PersonModel person = personMapper.map(personDTO);
+        person = personRepository.save(person);
+        return personMapper.map(person);
     }
 
     //Delete person
@@ -37,12 +44,17 @@ public class PersonService {
     }
 
     //Update person
-    public PersonModel updatePerson(Long id, PersonModel upPerson){
-        if (personRepository.existsById(id)){
+    public PersonDTO updatePerson(Long id, PersonDTO personDTO){
+        Optional<PersonModel> existingUser = personRepository.findById(id);
+        if (existingUser.isPresent()){
+            PersonModel upPerson = personMapper.map(personDTO);
             upPerson.setId(id);
-            return personRepository.save(upPerson);
+            PersonModel savePerson = personRepository.save(upPerson);
+            return personMapper.map(savePerson);
         }
         return null;
+
+
     }
 
 
