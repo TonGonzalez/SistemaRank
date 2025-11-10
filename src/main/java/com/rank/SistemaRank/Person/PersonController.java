@@ -16,26 +16,26 @@ public class PersonController {
 
     //Add person(CREATE)
     @PostMapping("/create")
-    public PersonModel createPerson(@RequestBody PersonModel newPerson){
+    public PersonDTO createPerson(@RequestBody PersonDTO newPerson){
         return personService.createPerson(newPerson);
     }
 
     //show all persons(READ)
     @GetMapping("/list")
-    public List<PersonModel> listPerson(){
+    public List<PersonDTO> listPerson(){
         return personService.listPersons();
     }
 
     //show person for ID(READ)
     @GetMapping("/list/{id}")
-    public PersonModel listIDperson(@PathVariable Long id){
+    public PersonDTO listIDperson(@PathVariable Long id){
         return personService.listID(id);
     }
 
-    //change data from Person(UPDATE)
-    @PutMapping("/alter")
-    public String changeDataPerson(){
-        return "Alterar informações do usuário";
+    //update person
+    @PutMapping("/update/{id}")
+    public PersonDTO updatePersonID(@PathVariable Long id, @RequestBody PersonDTO updatePerson){
+        return personService.updatePerson(id, updatePerson);
     }
 
     //delete person(DELETE)
@@ -43,12 +43,5 @@ public class PersonController {
     public void deleteIDperson(@PathVariable Long id){
         personService.deleteIDperson(id);
     }
-
-    //update person
-    @PutMapping("/update/{id}")
-    public PersonModel updatePersonID(@PathVariable Long id, @RequestBody PersonModel updatePerson){
-        return personService.updatePerson(id, updatePerson);
-    }
-
 
 }
