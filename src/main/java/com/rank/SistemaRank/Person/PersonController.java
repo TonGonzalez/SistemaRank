@@ -64,7 +64,6 @@ public class PersonController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Usuário: "+id+" não foi localizado");
         }
-
     }
 
 }
