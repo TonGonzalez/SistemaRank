@@ -13,8 +13,8 @@ public class MissionsService {
 
 
 
-    private MissionsRepository missionsRepository;
-    private MissionMapper missionMapper;
+    private final MissionsRepository missionsRepository;
+    private final MissionMapper missionMapper;
 
     public MissionsService(MissionsRepository missionsRepository, MissionMapper missionMapper) {
         this.missionsRepository = missionsRepository;
