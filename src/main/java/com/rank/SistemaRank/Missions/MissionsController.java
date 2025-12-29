@@ -1,6 +1,10 @@
 package com.rank.SistemaRank.Missions;
 
 import com.rank.SistemaRank.Person.PersonDTO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +24,11 @@ public class MissionsController {
 
     //Add mission(CREATE)
     @PostMapping("/create")
+    @Operation(summary = "Rota de Criação", description = "Essa rota permite criar novas missões")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201",description = "Missão criada"),
+            @ApiResponse(responseCode = "400",description = "Erro de criação")
+    })
     public ResponseEntity<String> createMission(@RequestBody MissionsDTO newMission){
         MissionsDTO mission = missionsService.createMission(newMission);
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -29,6 +38,11 @@ public class MissionsController {
 
     //show all missions(READ)
     @GetMapping("/list")
+    @Operation(summary = "Lista todas missões", description = "Essa rota permite listar todas as missões")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",description = "Lista encontrada"),
+            @ApiResponse(responseCode = "400",description = "Lista não localizada")
+    })
     public ResponseEntity<List<MissionsDTO>> listMissions(){
         List<MissionsDTO> missions = missionsService.listMissions();
         return ResponseEntity.ok(missions);
@@ -36,6 +50,11 @@ public class MissionsController {
 
     //show mission for ID(READ)
     @GetMapping("/list/{id}")
+    @Operation(summary = "Lista missão por ID", description = "Essa rota permite listar a missão pela ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",description = "Missão encontrado"),
+            @ApiResponse(responseCode = "400",description = "Missão não localizado")
+    })
     public ResponseEntity<?> listIDmission(@PathVariable Long id){
         MissionsDTO mission = missionsService.listID(id);
         if (mission  != null){
@@ -47,7 +66,16 @@ public class MissionsController {
     }
     //change data from Missions(UPDATE)
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateMissionID(@PathVariable Long id, @RequestBody MissionsDTO updateMission){
+    @Operation(summary = "Altera dados por ID", description = "Altera os dados de uma missão pelo ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",description = "Missão atualizada"),
+            @ApiResponse(responseCode = "400",description = "Erro na alteração")
+    })
+    public ResponseEntity<?> updateMissionID(
+            @Parameter(description = "Usuário manda o ID no caminho da requisição")
+            @PathVariable Long id,
+            @Parameter(description ="Usuário manda os dados do usário a ser atualizado no corpo da requisição" )
+            @RequestBody MissionsDTO updateMission){
         MissionsDTO mission = missionsService.updateMission(id, updateMission);
         if (mission !=null){
             return ResponseEntity.ok(mission);
@@ -59,6 +87,11 @@ public class MissionsController {
 
     //delete mission(DELETE)
     @DeleteMapping("/delete/{id}")
+    @Operation(summary = "Deleta missão por ID", description = "Deleta a missão existente por ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",description = "Missão deletada"),
+            @ApiResponse(responseCode = "400",description = "Erro na exclusão")
+    })
     public ResponseEntity<String> deleteID(@PathVariable Long id){
         if (missionsService.listID(id) != null) {
             return ResponseEntity.ok("Missão do ID: "+id+" deletada com sucesso");
