@@ -69,7 +69,6 @@ public class PersonControllerUI {
             model.addAttribute("message", "Usuário não encontrado");
             return "listPerson";
         }
-
         model.addAttribute("person", person);
         model.addAttribute("missions", missionsService.listMissions());
 
@@ -80,19 +79,14 @@ public class PersonControllerUI {
     @PostMapping("/update")
     public String saveUpdate(@ModelAttribute PersonDTO person, RedirectAttributes redirectAttributes) {
         PersonDTO existingPerson = personService.listID(person.getId());
-
-        if (existingPerson != null) {
-            person.setMissions(existingPerson.getMissions());
-            personService.updatePerson(person.getId(), person);
-            redirectAttributes.addFlashAttribute("message", "Usuário atualizado com sucesso!");
-        } else {
+        if (existingPerson == null) {
             redirectAttributes.addFlashAttribute("error", "Usuário não encontrado");
+            return "redirect:/person/ui/list";
         }
+        personService.updatePerson(person.getId(), person);
+        redirectAttributes.addFlashAttribute("message", "Usuário atualizado com sucesso!");
 
         return "redirect:/person/ui/list";
     }
-
-
-
 
 }

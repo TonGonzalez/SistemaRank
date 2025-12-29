@@ -92,16 +92,12 @@
 
 <form th:action="@{/missions/ui/update}" th:object="${mission}" method="post">
     <input type="hidden" th:field="*{id}" />
-
     <label for="name">Name:</label>
     <input type="text" id="name" th:field="*{name}" required />
-
     <label for="difficulty">Difficulty:</label>
-    <input type="difficulty" id="difficulty" th:field="*{difficulty}" required />
-
+    <input type="text" id="difficulty" th:field="*{difficulty}" required />
     <button type="submit">Update Mission</button>
 </form>
-
-<a href="/missions/ui/list">Back to Person List</a>
+<a th:href="@{/missions/ui/list}">Back to Missions List</a>
 </body>
 </html>
