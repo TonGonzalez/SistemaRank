@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Tabela de Usuários</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 90%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f1f7ff;
+        }
+
+        /* Botões */
+        a {
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            margin-right: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.2s ease;
+        }
+
+        a:nth-child(1) { background-color: #17a2b8; color: white; }
+        a:nth-child(1):hover { background-color: #138496; }
+
+        a:nth-child(2) { background-color: #ffc107; color: #222; }
+        a:nth-child(2):hover { background-color: #e0a800; }
+
+        a:nth-child(3) { background-color: #dc3545; color: white; }
+        a:nth-child(3):hover { background-color: #b52a37; }
+
+        /* Célula de ações */
+        td:last-child {
+            white-space: nowrap;
+        }
+
+              .novo-btn {
+            display: block;
+            width: 200px;
+            margin: 0 auto 20px auto;
+            text-align: center;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.2s ease;
+        }
+
+        .novo-btn:hover {
+            background-color: #218838;
+        }
+
+    </style>
+
+</head>
+<body>
+<h1>Lista de usuários</h1>
+<a class="novo-btn" th:href="@{/person/ui/add}">+ Novo Usuário</a>
+<table>
+    <thead>
+      <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Idade</th>
+          <th>Email</th>
+          <th>Rank</th>
+          <th>Missões</th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr th:each ="person: ${persons}">
+         <td th:text="${person.id}"></td>
+         <td th:text="${person.name}"></td>
+         <td th:text="${person.age}"></td>
+         <td th:text="${person.email}"></td>
+         <td>
+             <span th:if="${person.missions}"><span th:text="${person.missions.name}"></span>, Dificuldade: <span th:text="${person.missions.difficulty}"></span></span>
+             <span th:if="${person.missions == null}">Sem Missões cadastradas para o usuário</span>
+         </td>
+
+         <td>
+             <a th:href="@{/person/ui/list/{id}(id=${person.id})}">Ver detalhes</a>
+             <a th:href="@{/person/ui/update/{id}(id=${person.id})}">Alterar</a>
+             <a th:href="@{/person/ui/delete/{id}(id=${person.id})}">Deletar</a>
+         </td>
+     </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

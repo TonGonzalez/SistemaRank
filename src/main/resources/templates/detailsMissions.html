@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Detalhes do usuário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        div {
+            width: 70%;
+            background: white;
+            margin: 0 auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        p {
+            font-size: 16px;
+            margin: 8px 0;
+        }
+
+        strong {
+            color: #222;
+        }
+
+        h3 {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: #444;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background-color: #f1f7ff;
+        }
+
+        /* Botão voltar */
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #17a2b8;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.2s ease;
+        }
+
+        a:hover {
+            background-color: #138496;
+        }
+    </style>
+
+</head>
+
+<body>
+<h1>Detalhes do usuário</h1>
+<div>
+    <h2 th:text="${mission.name}"></h2>
+    <p><strong>Nome:</strong> <span th:text="${mission.name}"></span></p>
+    <p><strong>Dificuldade:</strong> <span th:text="${mission.difficulty}"></span></p>
+
+    <a th:href="@{/missions/ui/list}">Voltar para a lista de usuários</a>
+
+</div>
+
+</body>
+</html>

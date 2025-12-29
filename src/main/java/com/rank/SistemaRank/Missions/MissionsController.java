@@ -58,6 +58,7 @@ public class MissionsController {
     }
 
     //delete mission(DELETE)
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteID(@PathVariable Long id){
         if (missionsService.listID(id) != null) {
             return ResponseEntity.ok("Missão do ID: "+id+" deletada com sucesso");

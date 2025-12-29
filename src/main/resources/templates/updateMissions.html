@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Update Missions</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .form-container {
+            width: 50%;
+            margin: 0 auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 12px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 6px rgba(0,123,255,0.4);
+        }
+
+        button {
+            margin-top: 22px;
+            padding: 12px;
+            background-color: #ffc107;
+            color: #222;
+            border: none;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #e0a800;
+        }
+
+        a.back-link {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: #17a2b8;
+            color: white;
+            border-radius: 8px;
+            transition: 0.2s ease;
+        }
+
+        a.back-link:hover {
+            background-color: #138496;
+        }
+    </style>
+
+</head>
+<body>
+<h1>Update Mission</h1>
+
+<form th:action="@{/missions/ui/update}" th:object="${mission}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required />
+
+    <label for="difficulty">Difficulty:</label>
+    <input type="difficulty" id="difficulty" th:field="*{difficulty}" required />
+
+    <button type="submit">Update Mission</button>
+</form>
+
+<a href="/missions/ui/list">Back to Person List</a>
+</body>
+</html>
