@@ -1,27 +1,33 @@
-## 🚀 Sistema de Cadastro – Desafios
+# 🚀 Sistema de Cadastro – Desafios
 
 Este projeto consiste em um sistema de cadastro de usuários e desafios, onde cada desafio pode ser atribuído a um usuário de forma livre e personalizada.
 Os desafios podem ser classificados por níveis, definidos pelo próprio usuário, dando total liberdade na criação. Aqui vale tudo: desde níveis como “cereja”, “tamarino” ou qualquer outro nome que faça sentido. 🍒🍊  
 A criatividade é o limite.
 Os usuários cadastrados devem conter CPF e e-mail, garantindo um controle mais rígido da quantidade de usuários no sistema e evitando duplicidades, tanto de CPF quanto de e-mail. Tudo simples, mas bem pensado.
+
 ---
-### 🛠️ Tecnologias Utilizadas
+
+## 🛠️ Tecnologias Utilizadas
 
 O projeto foi desenvolvido utilizando as seguintes ferramentas:
 
-- *Spring Boot* – API principal do sistema, estruturando toda a aplicação web  
-- *H2 Database* – banco de dados simples, ideal para testes e desenvolvimento  
-- *Thymeleaf* – responsável pela criação e renderização das páginas HTML  
-- *Swagger* – documentação clara e objetiva de todos os endpoints  
----
-### 💻 Linguagens Utilizadas
+- Spring Boot – API principal do sistema, estruturando toda a aplicação web  
+- H2 Database – banco de dados simples, ideal para testes e desenvolvimento  
+- Thymeleaf – responsável pela criação e renderização das páginas HTML  
+- Swagger – documentação clara e objetiva de todos os endpoints  
 
-- **Java**
-- **HTML**
-- **CSS**
-- **SQL**
 ---
-### 📌 Considerações sobre o Projeto
+
+## 💻 Linguagens Utilizadas
+
+- Java  
+- HTML  
+- CSS  
+- SQL  
+
+---
+
+## 📌 Considerações sobre o Projeto
 
 O desenvolvimento foi propositalmente simples, pois o objetivo principal é servir como um projeto base. A partir dele, é possível tanto evoluir para algo maior quanto manter a simplicidade, dependendo da necessidade.
 Algumas possibilidades de expansão incluem:
@@ -32,13 +38,17 @@ Algumas possibilidades de expansão incluem:
 - 🔗 Integração com outros bancos de dados  
 
 Durante todo o projeto, houve uma preocupação constante com o essencial, principalmente em relação à segurança e organização do código.  
-O sistema segue o padrão **CRUD**, com separação clara de camadas, uso de **DTOs** e evitando o acesso direto do usuário ao banco de dados, reduzindo conflitos e melhorando a manutenção.
-No geral, o projeto foi pensado para ser uma **base sólida**, fácil de entender, manter e evoluir para soluções mais complexas no futuro. Simples, funcional e escalável. ⚙️
----
-### 📬 Contato
+O sistema segue o padrão CRUD, com separação clara de camadas, uso de DTOs e evitando o acesso direto do usuário ao banco de dados, reduzindo conflitos e melhorando a manutenção.
+No geral, o projeto foi pensado para ser uma base sólida, fácil de entender, manter e evoluir para soluções mais complexas no futuro. Simples, funcional e escalável. ⚙️
 
-📧 **ayrton.souzaprofissional@gmail.com**
 ---
+
+## 📬 Contato
+
+📧 ayrton.souzaprofissional@gmail.com
+
+---
+
 ## 🧩 Tecnologias & Linguagens
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
